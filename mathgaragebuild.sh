@@ -97,6 +97,7 @@ cd $HOME/${build_folder}
 
 if [ ${pull_latest_code_from_github} -eq 1 ]; then
     e_warning "Pulling the latest code from master branch..."
+    e_note "git pull origin master"
     git pull origin master
     if [ $? -ne 0 ]; then
         e_error "Error pulling the latest code from Github. Exiting."
@@ -127,6 +128,7 @@ if [ ${build_flag} -eq 1 ]; then
     # Proceed with Build, Tag and Push
     # Initiating Docker Build (Example: "docker build -t mathgarage:v0.94 .")
     e_warning "Docker Build in progress..."
+    e_note "docker build -t ${app_tag} ."
     docker build -t ${app_tag} .
     if [ $? -ne 0 ]; then
         e_error "Error encounered during Docker Build. Exiting."
@@ -137,6 +139,7 @@ if [ ${build_flag} -eq 1 ]; then
 
     # Initiating Docker Tag (Example: "docker tag mathgarage:v0.94 gcr.io/mathgarage/mathgarage:v0.94")
     e_warning "Docker Tag in progress..."
+    e_note "docker tag ${app_tag} ${gcr_image}"
     docker tag ${app_tag} ${gcr_image}
     if [ $? -ne 0 ]; then
         e_error "Error encounered during Docker Tag. Exiting."
@@ -147,6 +150,7 @@ if [ ${build_flag} -eq 1 ]; then
 
     # Initiating Docker Push (Example: "docker push gcr.io/mathgarage/mathgarage:v0.94")
     e_warning "Docker Push to push the image to Google Container registry in progress..."
+    e_note "docker push ${gcr_image}"
     docker push ${gcr_image}
     if [ $? -ne 0 ]; then
         e_error "Error encounered during Docker Push. Exiting."
@@ -162,6 +166,7 @@ fi
 if [ ${deploy_flag} -eq 1 ]; then
     # Initiating Deploy to GAE
     e_warning "GAE Deployment in progress..."
+    e_note "gcloud app deploy"
     gcloud app deploy
     if [ $? -ne 0 ]; then
         e_error "Error encounered during GAE Deployment. Exiting."
