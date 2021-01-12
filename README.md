@@ -19,3 +19,11 @@ The script will need the following json config file as input.
 #gcr_image_prefix: GCR Image Prefix
 #build_flag: 0 or 1. 0 indicates no build, 1 indicates build.
 #deploy_flag: 0 or 1. 0 indicates no Deploy, 1 indicates Deploy to App Engine.
+
+
+# Mathgarage Setup Instructions
+
+1. git clone https://github.com/jaichenchlani/mathgarage.git
+2. git clone https://github.com/jaichenchlani/mathgarage-build.git
+3. Update buildconfig.json
+4. Execute mathgaragebuild.sh
