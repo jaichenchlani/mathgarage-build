@@ -5,7 +5,8 @@
 3. Upload the credentials-prod.json and credentials-sandbox.json files to the mathgarage/keys folder
 4. Navigate to mathgarage-build directory i.e. _cd mathgarage-build_
 4. Update **_buildconfig.json_** 
-5. Execute **./mathgaragebuild.sh buildconfig.json**
+5. gcloud init and set the project property to the appropriate project.
+6. Execute **./mathgaragebuild.sh buildconfig.json**
 
 ### _buildconfig.json_
 1. pull_latest_code_from_github: 0 or 1. 0 indicates no code pull from github, 1 indicates run "git pull origin master".
